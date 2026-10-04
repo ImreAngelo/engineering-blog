@@ -1,5 +1,7 @@
+import {defineQuery} from 'groq'
+
 // Get all information from post
-export default `*[
+export const POST_QUERY = defineQuery(`*[
 	_type == "post"
 	&& slug.current == $slug
 ][0]{
@@ -18,4 +20,4 @@ export default `*[
 		name
 	},
 	body
-}`;
+}`);

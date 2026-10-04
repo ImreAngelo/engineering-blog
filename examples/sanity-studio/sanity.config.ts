@@ -13,11 +13,9 @@ export default defineConfig({
 	plugins: [
 		structureTool(), 
 		visionTool(), 
+		// presentationTool({
+		// 	previewUrl: {initial: process.env.SANITY_STUDIO_PREVIEW_ORIGIN, previewMode: {enable: '/api/draft-mode/enable'}},
+		// 	resolve: blogPresentationResolve({basePath: '/blog'}),
 		blogPlugin()
 	],
 })
-
-//     structureTool(),
-//     presentationTool({
-//       previewUrl: {initial: process.env.SANITY_STUDIO_PREVIEW_ORIGIN, previewMode: {enable: '/api/draft-mode/enable'}},
-//       resolve: blogPresentationResolve({basePath: '/blog'}),

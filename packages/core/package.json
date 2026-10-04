@@ -4,10 +4,12 @@
   "private": true,
   "type": "module",
   "exports": {
-    ".": "./index.ts"
+    ".": "./index.ts",
+    "./query": "./query/index.ts",
+    "./types": "./sanity.types.ts"
   },
   "scripts": {
-    "schema:extract": "sanity schema extract"
+    "typegen": "sanity schema extract --force && sanity typegen generate"
   },
   "peerDependencies": {
     "sanity": "^6.17.0"
@@ -18,6 +20,7 @@
   "dependencies": {
     "@sanity/code-input": "^7.3.9",
     "@sanity/color-input": "^6.1.5",
-    "sanity-plugin-latex-input": "^3.0.9"
+    "sanity-plugin-latex-input": "^3.0.9",
+    "groq": "^6.17.0"
   }
 }

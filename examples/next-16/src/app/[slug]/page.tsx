@@ -2,8 +2,10 @@ import { PortableText, type SanityDocument } from "next-sanity";
 import { createImageUrlBuilder, type SanityImageSource } from "@sanity/image-url";
 import { client } from "@/sanity/client";
 import Link from "next/link";
+import { POST_QUERY } from "@imreangelo/blog-core/query";
+import { POSTS_QUERY_RESULT } from "@imreangelo/blog-core/types";
 
-const POST_QUERY = `*[_type == "post" && slug.current == $slug][0]`;
+// const POST_QUERY = `*[_type == "post" && slug.current == $slug][0]`;
 const { projectId, dataset } = client.config();
 const urlFor = (source: SanityImageSource) =>
   projectId && dataset
@@ -16,16 +18,16 @@ export default async function PostPage({
 }: {
   params: Promise<{ slug: string }>;
 }) {
-  const post = await client.fetch<SanityDocument>(POST_QUERY, await params, options);
-  const postImageUrl = post.image
-    ? urlFor(post.image)?.width(550).height(310).url()
-    : null;
+  const post = await client.fetch<POSTS_QUERY_RESULT>(POST_QUERY, await params, options);
+  // const postImageUrl = post
+  //   ? urlFor(post.image)?.width(550).height(310).url()
+  //   : null;
   return (
     <main className="container mx-auto min-h-screen max-w-3xl p-8 flex flex-col gap-4">
       <Link href="/" className="hover:underline">
         ← Back to posts
       </Link>
-      {postImageUrl && (
+      {/* {postImageUrl && (
         // eslint-disable-next-line @next/next/no-img-element
         <img
           src={postImageUrl}
@@ -34,7 +36,7 @@ export default async function PostPage({
           width="550"
           height="310"
         />
-      )}
+      )} */}
       <h1 className="text-4xl font-bold mb-8">{post.title}</h1>
       <div className="prose">
         <p>Published: {new Date(post.publishedAt).toLocaleDateString()}</p>
