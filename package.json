@@ -4,9 +4,12 @@
   "description": "",
   "main": "index.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1",
-    "dev": "pnpm dev:studio",
-    "dev:studio": "pnpm --filter sanity-studio dev --port=3000"
+    "dev": "pnpm run /^dev:/",
+    "dev:studio": "pnpm env:sync && pnpm --filter sanity-studio dev --port=3000",
+    "dev:next16": "pnpm env:sync && pnpm --filter next-16 dev --port=8080",
+    "env:sync": "node scripts/sync-env.mjs",
+    "postinstall": "node scripts/sync-env.mjs || true",
+    "test": "echo \"Error: no test specified\" && exit 1"
   },
   "keywords": [],
   "author": "",
