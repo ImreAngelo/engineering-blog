@@ -2,5 +2,6 @@
 node_modules
 
 # Generated files
-packages/core/schema.json
-packages/core/sanity.types.ts
+packages/studio/schema.json
+packages/queries/src/sanity.types.ts
+packages/*/dist

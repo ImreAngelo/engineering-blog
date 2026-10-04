@@ -7,9 +7,9 @@ export default defineCliConfig({
     dataset: 'production',
   },
   typegen: {
-    path: './query/**/*.ts',
-    schema: './schema.json',
-    generates: './sanity.types.ts',
+    path: './src/queries/**/*.ts',
+    schema: '../studio/schema.json',
+    generates: './src/sanity.types.ts',
     overloadClientMethods: false,
   },
 })

@@ -5,7 +5,7 @@ import {latexInput} from 'sanity-plugin-latex-input'
 import { types } from './schema/index'
 
 export const blogPlugin = definePlugin</*{codeModes?: CodeMode[]} |*/ void>((opts) => ({
-  name: 'blog-core',
+  name: '@engineering-blog/studio',
   plugins: [codeInput(), colorInput(), latexInput()], // {codeModes: opts?.codeModes ?? defaultCodeModes}
   schema: { types: types }
 }))

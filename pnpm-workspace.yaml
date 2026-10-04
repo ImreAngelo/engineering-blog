@@ -2,3 +2,9 @@ packages:
   - "packages/*"
   - "examples/*"
 linkWorkspacePackages: true
+
+# Examples declare npm ranges so they work as standalone templates.
+# Inside this repo, always link them to the local packages instead.
+overrides:
+  "@engineering-blog/studio": "workspace:*"
+  "@engineering-blog/queries": "workspace:*"

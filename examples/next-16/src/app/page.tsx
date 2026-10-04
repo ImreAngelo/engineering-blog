@@ -1,8 +1,6 @@
 import Link from "next/link";
-import { type SanityDocument } from "next-sanity";
 import { client } from "@/sanity/client";
-import { POSTS_QUERY } from "@imreangelo/blog-core/query";
-import { POSTS_QUERY_RESULT } from "@imreangelo/blog-core/types";
+import { POSTS_QUERY, type POSTS_QUERY_RESULT } from "@engineering-blog/queries";
 
 const options = { next: { revalidate: 30 } };
 

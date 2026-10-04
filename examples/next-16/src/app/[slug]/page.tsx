@@ -1,9 +1,8 @@
 import { PortableText, type SanityDocument } from "next-sanity";
 import { createImageUrlBuilder, type SanityImageSource } from "@sanity/image-url";
 import { client } from "@/sanity/client";
+import { POST_QUERY, type POST_QUERY_RESULT } from "@engineering-blog/queries";
 import Link from "next/link";
-import { POST_QUERY } from "@imreangelo/blog-core/query";
-import { POST_QUERY_RESULT } from "@imreangelo/blog-core/types";
 
 const { projectId, dataset } = client.config();
 const urlFor = (source: SanityImageSource) =>

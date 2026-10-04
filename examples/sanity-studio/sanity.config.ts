@@ -1,7 +1,7 @@
 import {defineConfig} from 'sanity'
 import {structureTool} from 'sanity/structure'
 import {visionTool} from '@sanity/vision'
-import {blogPlugin} from '@imreangelo/blog-core'
+import {blogPlugin} from '@engineering-blog/studio'
 
 export default defineConfig({
 	name: 'default',

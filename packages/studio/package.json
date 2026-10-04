@@ -1,26 +1,38 @@
 {
-  "name": "@imreangelo/blog-core",
+  "name": "@engineering-blog/studio",
   "version": "0.0.0",
-  "private": true,
+  "description": "Sanity Studio plugin with the schema for the engineering blog",
   "type": "module",
   "exports": {
-    ".": "./index.ts",
-    "./query": "./query/index.ts",
-    "./types": "./sanity.types.ts"
+    ".": "./src/index.ts"
+  },
+  "files": [
+    "dist"
+  ],
+  "publishConfig": {
+    "access": "public",
+    "exports": {
+      ".": {
+        "types": "./dist/index.d.mts",
+        "default": "./dist/index.mjs"
+      }
+    }
   },
   "scripts": {
-    "typegen": "sanity schema extract --force --enforce-required-fields && sanity typegen generate"
+    "build": "tsdown",
+    "schema:extract": "sanity schema extract --force --enforce-required-fields"
   },
   "peerDependencies": {
-    "sanity": "^6.17.0"
-  },
-  "devDependencies": {
     "sanity": "^6.17.0"
   },
   "dependencies": {
     "@sanity/code-input": "^7.3.9",
     "@sanity/color-input": "^6.1.5",
-    "sanity-plugin-latex-input": "^3.0.9",
-    "groq": "^6.17.0"
+    "sanity-plugin-latex-input": "^3.0.9"
+  },
+  "devDependencies": {
+    "sanity": "^6.17.0",
+    "tsdown": "^0.23.0",
+    "typescript": "^5.9.3"
   }
 }

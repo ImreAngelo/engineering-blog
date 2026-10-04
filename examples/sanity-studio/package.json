@@ -15,7 +15,7 @@
     "sanity"
   ],
   "dependencies": {
-    "@imreangelo/blog-core": "^0.0.0",
+    "@engineering-blog/studio": "^0.0.0",
     "@sanity/vision": "^6.17.0",
     "react": "^19.2.4",
     "react-dom": "^19.2.4",
