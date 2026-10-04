@@ -1,16 +1,13 @@
 import {definePlugin} from 'sanity'
 import {codeInput} from '@sanity/code-input'
-// import {colorInput} from '@sanity/color-input'
-// import {latexInput} from 'sanity-plugin-latex-input'
-// import {post, author, category, blockContent} from './schema'
-import { postType } from './schema/postType'
+import {colorInput} from '@sanity/color-input'
+import {latexInput} from 'sanity-plugin-latex-input'
+import { types } from './schema'
 
 export const blogPlugin = definePlugin</*{codeModes?: CodeMode[]} |*/ void>((opts) => ({
   name: 'blog-core',
-//   plugins: [codeInput({codeModes: opts?.codeModes ?? defaultCodeModes}), colorInput(), latexInput()],
-//   schema: {types: [post, author, category, blockContent]},
-  plugins: [codeInput()],
-  schema: { types: [postType] }
+  plugins: [codeInput(), colorInput(), latexInput()], // {codeModes: opts?.codeModes ?? defaultCodeModes}
+  schema: { types: types }
 }))
 
 // export {blogPresentationResolve} from './presentation'

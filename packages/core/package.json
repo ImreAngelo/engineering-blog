@@ -6,6 +6,9 @@
   "exports": {
     ".": "./index.ts"
   },
+  "scripts": {
+    "schema:extract": "sanity schema extract"
+  },
   "peerDependencies": {
     "sanity": "^6.17.0"
   },
@@ -13,6 +16,8 @@
     "sanity": "^6.17.0"
   },
   "dependencies": {
-    "@sanity/code-input": "^7.3.9"
+    "@sanity/code-input": "^7.3.9",
+    "@sanity/color-input": "^6.1.5",
+    "sanity-plugin-latex-input": "^3.0.9"
   }
 }

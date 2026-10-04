@@ -15,22 +15,9 @@ export default defineConfig({
 		visionTool(), 
 		blogPlugin()
 	],
-
-	schema: {
-		types: [],
-	},
 })
 
-
-// export default defineConfig({
-//   projectId: process.env.SANITY_STUDIO_PROJECT_ID!,
-//   dataset: 'production',
-//   plugins: [
 //     structureTool(),
 //     presentationTool({
 //       previewUrl: {initial: process.env.SANITY_STUDIO_PREVIEW_ORIGIN, previewMode: {enable: '/api/draft-mode/enable'}},
 //       resolve: blogPresentationResolve({basePath: '/blog'}),
-//     }),
-//     blogPlugin(),
-//   ],
-// })
