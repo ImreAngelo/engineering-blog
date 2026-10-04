@@ -1,2 +1,6 @@
 .env
 node_modules
+
+# Generated files
+packages/core/schema.json
+packages/core/sanity.types.ts
