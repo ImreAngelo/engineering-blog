@@ -1,7 +1,6 @@
 import {defineConfig} from 'sanity'
 import {structureTool} from 'sanity/structure'
 import {visionTool} from '@sanity/vision'
-import {schemaTypes} from './schemaTypes'
 import {blogPlugin} from '@imreangelo/blog-core'
 
 export default defineConfig({
@@ -18,7 +17,7 @@ export default defineConfig({
 	],
 
 	schema: {
-		types: schemaTypes,
+		types: [],
 	},
 })
 

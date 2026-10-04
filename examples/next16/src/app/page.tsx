@@ -1,69 +1,28 @@
-import Image from "next/image";
-import styles from "./page.module.css";
+import Link from "next/link";
+import { type SanityDocument } from "next-sanity";
+import { client } from "@/sanity/client";
 
-export default function Home() {
+const POSTS_QUERY = `*[
+  _type == "post"
+  && defined(slug.current)
+]|order(publishedAt desc)[0...12]{_id, title, slug, publishedAt}`;
+const options = { next: { revalidate: 30 } };
+
+export default async function IndexPage() {
+  const posts = await client.fetch<SanityDocument[]>(POSTS_QUERY, {}, options);
   return (
-    <div className={styles.page}>
-      <main className={styles.main}>
-        <Image
-          className={styles.logo}
-          src="/next.svg"
-          alt="Next.js logo"
-          width={100}
-          height={20}
-          priority
-        />
-        <div className={styles.intro}>
-          <h1>
-            To get started, edit the{" "}
-            <code className={styles.code}>page.tsx</code> file.
-          </h1>
-          <p>
-            Looking for a starting point or more instructions? Head over to{" "}
-            <a
-              href="https://vercel.com/templates?framework=next.js&utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-              target="_blank"
-              rel="noopener noreferrer"
-            >
-              Templates
-            </a>{" "}
-            or the{" "}
-            <a
-              href="https://nextjs.org/learn?utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-              target="_blank"
-              rel="noopener noreferrer"
-            >
-              Learning
-            </a>{" "}
-            center.
-          </p>
-        </div>
-        <div className={styles.ctas}>
-          <a
-            className={styles.primary}
-            href="https://vercel.com/new?utm_source=create-next-app&utm_medium=appdir-template&utm_campaign=create-next-app"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            <Image
-              className={styles.logo}
-              src="/vercel.svg"
-              alt="Vercel logomark"
-              width={16}
-              height={14}
-            />
-            Deploy Now
-          </a>
-          <a
-            className={styles.secondary}
-            href="https://nextjs.org/docs?utm_source=create-next-app&utm_medium=appdir-template&utm_campaign=create-next-app"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            Documentation
-          </a>
-        </div>
-      </main>
-    </div>
+    <main className="container mx-auto min-h-screen max-w-3xl p-8">
+      <h1 className="text-4xl font-bold mb-8">Posts</h1>
+      <ul className="flex flex-col gap-y-4">
+        {posts.map((post) => (
+          <li className="hover:underline" key={post._id}>
+            <Link href={`/${post.slug.current}`}>
+              <h2 className="text-xl font-semibold">{post.title}</h2>
+              <p>{new Date(post.publishedAt).toLocaleDateString()}</p>
+            </Link>
+          </li>
+        ))}
+      </ul>
+    </main>
   );
 }
