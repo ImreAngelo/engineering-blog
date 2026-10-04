@@ -3,6 +3,7 @@ import { createImageUrlBuilder, type SanityImageSource } from "@sanity/image-url
 import { client } from "@/sanity/client";
 import { POST_QUERY, type POST_QUERY_RESULT } from "@engineering-blog/queries";
 import Link from "next/link";
+import { portableTextComponents } from "@engineering-blog/wrapper-next";
 
 const { projectId, dataset } = client.config();
 const urlFor = (source: SanityImageSource) =>
@@ -38,7 +39,7 @@ export default async function PostPage({
       <h1 className="text-4xl font-bold mb-8">{post.title}</h1>
       <div className="prose">
         <p>Published: {post.publishedAt ?? "Unknown date"}</p>
-        {Array.isArray(post.body) && <PortableText value={post.body} />}
+        {Array.isArray(post.body) && <PortableText value={post.body} components={portableTextComponents} />}
       </div>
     </main>
   ) : (

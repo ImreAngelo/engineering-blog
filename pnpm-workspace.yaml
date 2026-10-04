@@ -8,3 +8,4 @@ linkWorkspacePackages: true
 overrides:
   "@engineering-blog/studio": "workspace:*"
   "@engineering-blog/queries": "workspace:*"
+  "@engineering-blog/wrapper-next": "workspace:*"

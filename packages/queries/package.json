@@ -1,7 +1,7 @@
 {
   "name": "@engineering-blog/queries",
   "version": "0.0.0",
-  "description": "GROQ queries and generated TypeScript types for the engineering blog",
+  "description": "GROQ queries and generated TypeScript types for the blog template",
   "type": "module",
   "exports": {
     ".": "./src/index.ts",

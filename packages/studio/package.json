@@ -1,7 +1,7 @@
 {
   "name": "@engineering-blog/studio",
   "version": "0.0.0",
-  "description": "Sanity Studio plugin with the schema for the engineering blog",
+  "description": "Sanity Studio plugin with the schema for the blog template",
   "type": "module",
   "exports": {
     ".": "./src/index.ts"
