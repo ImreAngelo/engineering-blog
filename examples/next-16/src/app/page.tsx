@@ -4,12 +4,9 @@ import { client } from "@/sanity/client";
 import { POSTS_QUERY } from "@imreangelo/blog-core/query";
 import { POSTS_QUERY_RESULT } from "@imreangelo/blog-core/types";
 
-// const POSTS_QUERY = `*[
-//   _type == "post"
-//   && defined(slug.current)
-// ]|order(publishedAt desc)[0...12]{_id, title, slug, publishedAt}`;
 const options = { next: { revalidate: 30 } };
 
+// TODO: Get posts number n..N
 export default async function IndexPage() {
   const posts = await client.fetch<POSTS_QUERY_RESULT>(POSTS_QUERY, {}, options);
   return (
@@ -19,8 +16,9 @@ export default async function IndexPage() {
         {posts.map((post) => (
           <li className="hover:underline" key={post._id}>
             <Link href={`/${post.slug.current}`}>
-              <h2 className="text-xl font-semibold">{post.title}</h2>
-              <p>{new Date(post.publishedAt).toLocaleDateString()}</p>
+              <h2 className="text-xl font-semibold">{post.title ?? "Untitled post"}</h2>
+              {/* <p>{new Date(post.publishedAt).toLocaleDateString()}</p> */}
+              <p>{post.publishedAt ?? "Unknown date"}</p>
             </Link>
           </li>
         ))}
