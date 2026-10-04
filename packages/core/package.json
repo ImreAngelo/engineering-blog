@@ -11,5 +11,8 @@
   },
   "devDependencies": {
     "sanity": "^6.17.0"
+  },
+  "dependencies": {
+    "@sanity/code-input": "^7.3.9"
   }
 }
