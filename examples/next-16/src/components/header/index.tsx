@@ -1,6 +1,7 @@
 import { CSSProperties } from "react";
 import List from "./list";
 import "./header.css";
+import Avatar from "../avatar";
 
 type HeaderStyleOptions = {
     color?: string;
@@ -37,6 +38,9 @@ export default async function Header({
                     lineHeight: "3.4rem",
                     padding: "0"
                 }}>{title ?? "Uten tittel"}</h1>
+                <div>
+                    <Avatar />
+                </div>
                 <p>Published: {publishedAt ?? "Unknown date"}</p>
             </div>
         </div>

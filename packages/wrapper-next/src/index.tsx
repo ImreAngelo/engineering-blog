@@ -3,7 +3,9 @@ import {POST_QUERY, POSTS_QUERY, type POST_QUERY_RESULT, type POSTS_QUERY_RESULT
 import CodeBlock from "./codeblock"
 import LatexBlock from "./latex"
 
-export {CodeBlock, LatexBlock}
+import PostBody from "./components/PostBody"
+
+export {CodeBlock, LatexBlock, PostBody}
 
 export type Post = NonNullable<POST_QUERY_RESULT>
 // export type Posts = NonNullable<POSTS_QUERY_RESULT>
