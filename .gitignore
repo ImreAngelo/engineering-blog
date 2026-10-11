@@ -1,5 +1,6 @@
 .env
 node_modules
+.trunk
 
 # Generated files
 packages/studio/schema.json

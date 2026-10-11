@@ -1,9 +1,9 @@
-import { PortableText, type SanityDocument } from "next-sanity";
+import { PortableText } from "next-sanity";
 import { createImageUrlBuilder, type SanityImageSource } from "@sanity/image-url";
+import { portableTextComponents } from "@engineering-blog/next";
 import { client } from "@/sanity/client";
-import { POST_QUERY, type POST_QUERY_RESULT } from "@engineering-blog/queries";
+import Header from "@/components/header";
 import Link from "next/link";
-import { portableTextComponents } from "@engineering-blog/wrapper-next";
 
 const { projectId, dataset } = client.config();
 const urlFor = (source: SanityImageSource) =>
@@ -17,15 +17,22 @@ export default async function PostPage({
 }: {
   params: Promise<{ slug: string }>;
 }) {
-  const post = await client.fetch<POST_QUERY_RESULT>(POST_QUERY, await params, options);
+  // const post = await client.fetch<POST_QUERY_RESULT>(POST_QUERY, await params, options);
+  const post = await client.getPost(params, options);
   // const postImageUrl = post.
   //   ? urlFor(post.image)?.width(550).height(310).url()
   //   : null;
+
+  console.log(post?.category?.backgroundColor?.hex);
+
   return post ? (
-    <main className="container mx-auto min-h-screen max-w-3xl p-8 flex flex-col gap-4">
-      <Link href="/" className="hover:underline">
-        ← Back to posts
-      </Link>
+    <main>
+      <Header {...post} options={{
+        color: post.category?.backgroundColor?.hex ?? '#aa0000',
+        categories: [post.category?.title || ""]
+      }} style={{
+        maxWidth: "768px",
+      }}/>
       {/* {postImageUrl && (
         // eslint-disable-next-line @next/next/no-img-element
         <img
@@ -36,9 +43,14 @@ export default async function PostPage({
           height="310"
         />
       )} */}
-      <h1 className="text-4xl font-bold mb-8">{post.title}</h1>
-      <div className="prose">
-        <p>Published: {post.publishedAt ?? "Unknown date"}</p>
+      <div style={{
+        display: "flex",
+        flexDirection: "column",
+        gap: ".9rem",
+        margin: "0 auto",
+        maxWidth: "768px",
+        padding: "1.8rem .6rem"
+      }}>
         {Array.isArray(post.body) && <PortableText value={post.body} components={portableTextComponents} />}
       </div>
     </main>

@@ -1,8 +1,8 @@
 import "server-only"
 
 import type { BundledTheme } from 'shiki'
-import { codeToHtml } from 'shiki'
 import type { Code } from "@engineering-blog/queries/types"
+import { codeToHtml } from 'shiki'
 import style from "./code.module.css"
 
 type Props = {

@@ -19,11 +19,8 @@ importers:
 
   examples/next-16:
     dependencies:
-      '@engineering-blog/queries':
-        specifier: workspace:*
-        version: link:../../packages/queries
-      '@engineering-blog/wrapper-next':
-        specifier: workspace:*
+      '@engineering-blog/next':
+        specifier: ^0.0.0
         version: link:../../packages/wrapper-next
       '@sanity/image-url':
         specifier: ^2.1.1

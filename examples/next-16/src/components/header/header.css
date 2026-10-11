@@ -1,0 +1,12 @@
+.flex {
+    display: flex;
+}
+
+.list-none {
+    list-style-type: none;
+}
+
+.list-item {
+    display: flex;
+    align-items: center;
+}
