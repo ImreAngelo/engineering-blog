@@ -29,6 +29,6 @@
     ".next/types/**/*.ts",
     ".next/dev/types/**/*.ts",
     "**/*.mts"
-  ],
+, "../../packages/wrapper-next/src/components/Avatar.tsx"  ],
   "exclude": ["node_modules"]
 }
