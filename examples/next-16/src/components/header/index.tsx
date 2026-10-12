@@ -52,7 +52,9 @@ export default async function Header({
                     display: "flex",
                     gap: "0.88rem",
                 }}>
-                    <Avatar image={urlFor(author.image!)?.url()}/>
+                    <div style={{ width: "32px", height: "32px", flexShrink: 0 }}>
+                        <Avatar image={urlFor(author.image!)?.url()}/>
+                    </div>
                     <span>
                         <p>Written by {author.name}</p>
                         <p>{/*author.position*/} on {date}</p>

@@ -24,7 +24,7 @@ export async function generateMetadata(
 
 export default async function PostPage({ params, searchParams }: Props) {
 	const post = await client.getPost(params, options);
-	// TODO: Handle missing author etc.
+	// TODO: Handle missing author etc. and default/fallbacks
     const author = await client.getAuthor(post?.author?._id ?? "admin");
 
 	return post ? (
